@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github](https://github.com/MuhRandy/faq-accordion-main-frontendmentor)
+- Live Site URL: [Github Pages](https://muhrandy.github.io/faq-accordion-main-frontendmentor/)
 
 ## My process
 
@@ -189,7 +189,3 @@ I want when user navigate the accordion will show and when move to the next acco
 - Website - [Muhammad Randy](https://mrandy-portfolio.web.app/)
 - Frontend Mentor - [@MuhRandy](https://www.frontendmentor.io/profile/MuhRandy)
 - Twitter - [@RandyThz](https://twitter.com/RandyThz)
-
-```
-
-```
