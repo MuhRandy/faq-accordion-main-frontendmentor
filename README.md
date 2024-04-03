@@ -113,67 +113,68 @@ we don't need to make chile covering whole parent. It will change the child when
 
 #### Keyboard Event Listener and Focusable Element
 
-    I need this so the user can navigate thorough the Questions. First on FAQs question I am using div to wrap it. My idea was to focus on it when user press the arrow up or arrow down on keyboard. First I need to test it on browser console like this:
+I need this so the user can navigate thorough the Questions. First on FAQs question I am using div to wrap it. My idea was to focus on it when user press the arrow up or arrow down on keyboard. First I need to test it on browser console like this:
 
-    ```js
-    // get the element div on section
-    const section = document.getElementsByTagName("section")[0];
-    const sectionDiv = section.getElementsByTagName('div')[0];
+```js
+// get the element div on section
+const section = document.getElementsByTagName("section")[0];
+const sectionDiv = section.getElementsByTagName("div")[0];
 
-    // when user press keydown
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-            sectionDiv.focus()
-        }
-    })
-    ```
+// when user press keydown
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+    sectionDiv.focus();
+  }
+});
+```
 
-    But nothing happened when I press up or down on keyboard. Turn out the isn't the focusable element. This is what the focusable element is if they are not disabled:
-    - input
-    - select
-    - textarea
-    - button
-    - object
-    - Anchors are focusable if they have an href or tabindex attribute
-    - Area elements are focusable if they are inside a named map, have an href attribute, and there is a visible image using the map.
+But nothing happened when I press up or down on keyboard. Turn out the isn't the focusable element. This is what the focusable element is if they are not disabled:
 
-    Because of that I need to change my div to button, and it work it can be focusable. This is what I use to make user can navigate using keyboard.
+- input
+- select
+- textarea
+- button
+- object
+- Anchors are focusable if they have an href or tabindex attribute
+- Area elements are focusable if they are inside a named map, have an href attribute, and there is a visible image using the map.
 
-    ```js
-    const sections = document.getElementsByTagName("section");
-    const buttons = document.getElementsByTagName("button");
+Because of that I need to change my div to button, and it work it can be focusable. This is what I use to make user can navigate using keyboard.
 
-    let i = -1;
+```js
+const sections = document.getElementsByTagName("section");
+const buttons = document.getElementsByTagName("button");
 
-    document.addEventListener("keydown", (event) => {
-    i = navigateWithArrowKeyboard(buttons, event, i);
+let i = -1;
 
-    buttons[i].focus();
-    });
+document.addEventListener("keydown", (event) => {
+  i = navigateWithArrowKeyboard(buttons, event, i);
 
-    function navigateWithArrowKeyboard(elements, event, i) {
-        const lastElementIndex = elements.length - 1;
+  buttons[i].focus();
+});
 
-        switch (event.key) {
-            case "ArrowDown":
-                if (i === -1 || i === lastElementIndex) {
-                    return (i = 0);
-                } else {
-                    return (i += 1);
-                }
+function navigateWithArrowKeyboard(elements, event, i) {
+  const lastElementIndex = elements.length - 1;
 
-            case "ArrowUp":
-                if (i === -1 || i === 0) {
-                    return (i = lastElementIndex);
-                } else {
-                    return (i -= 1);
-                }
+  switch (event.key) {
+    case "ArrowDown":
+      if (i === -1 || i === lastElementIndex) {
+        return (i = 0);
+      } else {
+        return (i += 1);
+      }
 
-            default:
-                return i;
-        }
-    }
-    ```
+    case "ArrowUp":
+      if (i === -1 || i === 0) {
+        return (i = lastElementIndex);
+      } else {
+        return (i -= 1);
+      }
+
+    default:
+      return i;
+  }
+}
+```
 
 ### Continued development
 
